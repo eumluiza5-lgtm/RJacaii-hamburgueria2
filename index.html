@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- META VIEWPORT CORRIGIDA - TRAVA O ZOOM -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>RJ - Açaí & Hamburgueria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <body>
+        <div id="aviso" class="aviso"></div>
+
+        <!-- HEADER -->
+        <header>
+            <img src="imglogorj.jpeg" alt="RJ Logo" class="logo">
+            <h1>RJ 💜</h1>
+            <p>Açaí & Hamburgueria</p>
+        </header>
+
+        <div id="statusLoja" class="status-loja">🔴 FECHADO</div>
+
+        <!-- HORÁRIO DE FUNCIONAMENTO -->
+        <div class="horario-funcionamento">
+            <h3>🕒 Horário de Funcionamento</h3>
+            <p>Segunda a Sexta: 18:30 às 21:00</p>
+            <p><strong>Quarta-feira: Fechado</strong></p>
+            <p>Sábado e Domingo: 15:00 às 21:00</p>
+        </div>
+
+        <main>
+            <!-- BOTÕES PRINCIPAIS -->
+            <div class="linktree-buttons">
+                <button onclick="mostrarSecao('acai')">💜 Monte seu Açaí</button>
+                <button onclick="mostrarSecao('hamburgueres')">🍔 Hamburgueres</button>
+            </div>
+
+            <!-- SEÇÃO AÇAÍ -->
+            <section id="acai" class="secao">
+
+
+                <!-- BATIDINHA DE AÇAÍ -->
+                <h3 style="margin-top:20px;">🥤 Batidinha de Açaí</h3>
+                <div class="grid-produtos">
+                    <div class="produto-select">
+                        <img src="imgbati300ml.jpg" alt="Shake 300ml">
+                        <h3>Shake 300ml - R$14</h3>
+                        <button onclick="selecionarBatida('300ml|14')">Selecionar</button>
+                    </div>
+                    <div class="produto-select">
+                        <img src="imgbati500ml.jpg" alt="Shake 500ml">
+                        <h3>Shake 500ml - R$18</h3>
+                        <button onclick="selecionarBatida('500ml|18')">Selecionar</button>
+                    </div>
+                </div>
+
+                <!-- MONTAGEM BATIDA -->
+                <div id="montagemBatida" style="display:none; margin-top:20px;">
+                    <div id="statusBatida" class="status-montagem"></div>
+                    <h3>Acompanhamentos (Escolha até 2)</h3>
+                    <div id="acompBatida" class="checkbox-group"></div>
+                    <h3>Cobertura (Escolha 1)</h3>
+                    <div id="cobBatida" class="checkbox-group"></div>
+                    <button class="btn-batidinha" onclick="adicionarBatida()">
+                        Adicionar Batidinha
+                    </button>
+                </div>
+                <!-- AÇAÍ NORMAL -->
+                <h3 style="margin-top:30px;">🍧 Açaí</h3>
+                <div class="grid-produtos">
+                    <div class="produto-select">
+                        <img src="img300ml.jpg" alt="Açaí 300ml">
+                        <h3>300ml</h3>
+                        <p class="preco-produto">R$13</p>
+                        <button onclick="selecionarTamanho('300|13|3|1|1|1')">Selecionar</button>
+                    </div>
+                    <div class="produto-select">
+                        <img src="img400ml.jpg" alt="Açaí 400ml">
+                        <h3>400ml</h3>
+                        <p class="preco-produto">R$17</p>
+                        <button onclick="selecionarTamanho('400|17|4|1|1|1')">Selecionar</button>
+                    </div>
+                    <div class="produto-select">
+                        <img src="img500ml.jpg" alt="Açaí 500ml">
+                        <h3>500ml</h3>
+                        <p class="preco-produto">R$19</p>
+                        <button onclick="selecionarTamanho('500|19|5|1|1|2')">Selecionar</button>
+                    </div>
+                    <div class="produto-select">
+                        <img src="imgtigelinha.jpg" alt="Tigela">
+                        <h3>Tigela</h3>
+                        <p class="preco-produto">R$25</p>
+                        <button onclick="selecionarTamanho('tigela|25|6|2|2|2')">Selecionar</button>
+                    </div>
+                </div>
+
+                <!-- MONTAGEM AÇAÍ -->
+                <div id="montagem" class="modal-acai" style="display:none;">
+                    <div class="modal-box">
+
+                        <span class="fechar" onclick="fecharModalAcai()">×</span>
+
+                        <h3>Monte seu Açaí</h3>
+
+                        <div class="etapa">
+                            <h4> Acompanhamentos</h4>
+                            <div id="acomp" class="checkbox-group"></div>
+                        </div>
+
+                        <div class="etapa">
+                            <h4> Frutas</h4>
+                            <div id="frutas" class="checkbox-group"></div>
+                        </div>
+
+                        <div class="etapa">
+                            <h4> Coberturas</h4>
+                            <div id="coberturas" class="checkbox-group"></div>
+                        </div>
+
+                        <div class="etapa">
+                            <h4> Cremes</h4>
+                            <div id="cremes" class="checkbox-group"></div>
+                        </div>
+
+                        <button class="btn-carrinho" onclick="adicionarAcai()">
+                            Adicionar ao Carrinho
+                        </button>
+
+                    </div>
+                </div>
+                <!-- SEÇÃO HAMBURGUERES -->
+                <section id="hamburgueres" class="secao">
+                    <h2>🍔 Hamburgueres</h2>
+                    <div class="grid-produtos">
+                        <div class="produto">
+                            <img src="imgxsalada.jpg" alt="X-Salada">
+                            <h3>X-Salada</h3>
+                            <p class="descricao">Carne artesanal, cebola caramelizada, alface, tomate e queijo.</p>
+                            <p class="preco">R$15</p>
+                            <button onclick="addItem('X-Salada',15)">Adicionar</button>
+                        </div>
+                        <div class="produto">
+                            <img src="imgxcalabresa.jpg" alt="X-Calabresa">
+                            <h3>X-Calabresa</h3>
+                            <p class="descricao">Carne artesanal, calabresa, cebola caramelizada, tomate, alface, queijo
+                                e
+                                presunto.</p>
+                            <p class="preco">R$18</p>
+                            <button onclick="addItem('X-Calabresa',18)">Adicionar</button>
+                        </div>
+                        <div class="produto">
+                            <img src="imgxbacon.jpg" alt="X-Bacon">
+                            <h3>X-Bacon</h3>
+                            <p class="descricao">Carne artesanal, bacon, cebola caramelizada, tomate, alface, queijo,
+                                presunto e
+                                ovo.</p>
+                            <p class="preco">R$22</p>
+                            <button onclick="addItem('X-Bacon',22)">Adicionar</button>
+                        </div>
+                        <div class="produto destaque">
+                            <img src="imgxduplo.jpg" alt="X-Duplo">
+                            <h3>X-Duplo 🔥</h3>
+                            <p class="descricao">2 carnes artesanais, bacon, calabresa, cebola caramelizada, alface,
+                                tomate,
+                                2
+                                queijos, 2 presuntos e ovo.</p>
+                            <p class="preco">R$28</p>
+                            <button onclick="addItem('X-Duplo',28)">Adicionar</button>
+                        </div>
+                    </div>
+                </section>
+
+        </main>
+
+        <!-- BOTÃO CARRINHO -->
+        <button class="btn-carrinho" onclick="abrirCarrinho()">🛒 <span id="contador">0</span></button>
+
+        <!-- OVERLAY -->
+        <div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
+
+        <!-- CARRINHO -->
+        <div class="carrinho" id="carrinho">
+            <div class="topo-carrinho">
+                <h2>Seu Pedido</h2>
+                <button onclick="fecharCarrinho()">✖</button>
+            </div>
+
+            <ul id="lista"></ul>
+            <h3>Total: R$ <span id="total">0.00</span></h3>
+
+            <!-- PIX -->
+            <div class="pix-area">
+                <h3>💳 Pix</h3>
+                <div class="pix-box">
+                    <span id="chavePix">347.285.383-20</span>
+                    <button onclick="copiarPix()">Copiar</button>
+                </div>
+                <script>
+                    function copiarPix() {
+                        const chave = document.getElementById("chavePix").textContent.trim();
+                        const msg = document.getElementById("msgPix");
+
+                        const textarea = document.createElement("textarea");
+                        textarea.value = chave;
+
+                        // Evita scroll na tela
+                        textarea.style.position = "fixed";
+                        textarea.style.top = "-1000px";
+
+                        document.body.appendChild(textarea);
+                        textarea.focus();
+                        textarea.select();
+
+                        try {
+                            const sucesso = document.execCommand("copy");
+                            if (sucesso) {
+                                msg.textContent = "✅ Chave Pix copiada com sucesso!";
+                                msg.style.color = "green";
+                            } else {
+                                msg.textContent = "❌ Não foi possível copiar.";
+                                msg.style.color = "red";
+                            }
+                        } catch (err) {
+                            msg.textContent = "❌ Erro ao copiar.";
+                            msg.style.color = "red";
+                            console.error(err);
+                        }
+
+                        document.body.removeChild(textarea);
+
+                        setTimeout(() => {
+                            msg.textContent = "";
+                        }, 3000);
+                    }
+                </script>
+
+
+
+                <small id="msgPix"></small>
+            </div>
+
+            <!-- PAGAMENTO -->
+            <div class="pagamento">
+                <h3>💰 Forma de Pagamento</h3>
+
+                <label>
+                    <input type="radio" name="pagamento" value="Pix" checked onclick="mostrarTroco()">
+                    Pix
+                </label>
+
+                <label>
+                    <input type="radio" name="pagamento" value="Dinheiro" onclick="mostrarTroco()">
+                    Dinheiro
+                </label>
+
+                <div id="areaTroco" style="display:none; margin-top:10px;">
+                    <label>Precisa de troco para quanto?</label>
+                    <input type="number" id="trocoValor" placeholder="Ex: 50">
+                </div>
+            </div>
+
+            <!-- BOTÃO FINALIZAR -->
+            <button class="btn-principal" onclick="finalizar()">Finalizar Pedido</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+
+</html>

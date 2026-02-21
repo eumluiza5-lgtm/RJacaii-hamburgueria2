@@ -1,0 +1,538 @@
+/* ================= RESET GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html,
+body {
+    touch-action: manipulation;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #f9f9f9;
+    color: #333;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input,
+textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    font-size: 16px;
+}
+
+button {
+    touch-action: manipulation;
+    font-size: 16px;
+}
+
+/* ================= HEADER ================= */
+header {
+    background: linear-gradient(135deg, #5e0b87, #8e24aa);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.logo {
+    width: 85px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 26px;
+}
+
+.status-loja {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.aberto {
+    color: #2ecc71;
+}
+
+.fechado {
+    color: #e53935;
+}
+
+/* ================= SEÇÕES ================= */
+.secao {
+    padding: 20px 15px;
+}
+
+.titulo-secao,
+.secao h2,
+.secao h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6a0dad;
+}
+
+.secao h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.secao h3 {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+/* ================= GRID PRODUTOS ================= */
+.grid-produtos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ================= CARD DO PRODUTO - TODOS ================= */
+/* Hambúrgueres usam .produto */
+/* Açaí e Batidinha usam .produto-select */
+.produto,
+.produto-select {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+    gap: 10px;
+    width: 100%;
+}
+
+/* ================= IMAGEM DO PRODUTO ================= */
+.produto img,
+.produto-select img {
+    width: 130px;
+    height: 130px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ================= NOME DO PRODUTO (h3) ================= */
+.produto h3,
+.produto-select h3 {
+    color: #6a0dad;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ================= DESCRIÇÃO ================= */
+.produto .descricao {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: 0;
+}
+
+/* ================= PREÇO ================= */
+.produto .preco,
+.produto-select .preco-produto {
+    font-weight: bold;
+    color: #4a0072;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: 5px 0;
+}
+
+/* ================= BOTÃO ADICIONAR ================= */
+.produto button,
+.produto-select button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    background: #fdd835;
+    color: #4a0072;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    display: block;
+    font-size: 15px;
+}
+
+/* ================= BOTÃO CARRINHO ================= */
+.btn-carrinho {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #6a0dad;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 18px;
+    font-size: 18px;
+    z-index: 1200;
+    cursor: pointer;
+}
+
+/* ================= MODAL AÇAÍ ================= */
+.modal-acai {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-acai.ativo {
+    display: flex;
+}
+
+.modal-box {
+    background: #fff;
+    width: 90%;
+    max-width: 420px;
+    max-height: 85vh;
+    border-radius: 18px;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: subir .3s ease;
+}
+
+.fechar {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* ================= CHECKBOXES ================= */
+.etapa {
+    margin-bottom: 15px;
+}
+
+.etapa h4 {
+    margin-bottom: 8px;
+    color: #6a0dad;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f3e5f5;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    accent-color: #6a0dad;
+}
+
+/* ================= BOTÃO MODAL ================= */
+.modal-box button {
+    margin-top: 12px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #6a0dad;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* ================= CARRINHO ================= */
+.carrinho {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 95%;
+    max-width: 380px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, .2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: .3s;
+    z-index: 1500;
+    border-radius: 10px 0 0 10px;
+}
+
+.carrinho.ativo {
+    right: 0;
+    padding-bottom: 90px;
+}
+
+.topo-carrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    flex-grow: 1;
+}
+
+.item-carrinho {
+    background: #f3e5f5;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-item p {
+    margin: 2px 0 0;
+}
+
+.controle-qtd {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.controle-qtd button {
+    background: #6a0dad;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6a0dad;
+    margin: 10px 0 15px;
+}
+
+.pagamento {
+    background: #f3e5f5;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.pagamento label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.pagamento input[type="radio"] {
+    accent-color: #6a1b9a;
+}
+
+#areaTroco {
+    display: none;
+    margin-top: 8px;
+}
+
+#areaTroco input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.pix-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    background: #e1bee7;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.pix-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.pix-area button,
+.pix-box button {
+    background: #6a1b9a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#msgPix {
+    font-size: 13px;
+    margin-top: 6px;
+    color: #333;
+}
+
+.finalizar-pedido {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #fdd835;
+    color: #4a0072;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+    margin-top: 12px;
+}
+
+.finalizar-pedido:active {
+    transform: scale(0.97);
+}
+
+.carrinho.ativo .finalizar-pedido {
+    margin-bottom: 20px;
+}
+
+/* ================= ANIMAÇÃO ================= */
+@keyframes subir {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ================= OVERLAY ================= */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 900;
+}
+
+/* ================= HORÁRIO ================= */
+.horario-funcionamento {
+    background: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ================= BOTÕES INICIAIS ================= */
+.linktree-buttons {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.linktree-buttons button {
+    padding: 15px;
+    border-radius: 14px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    background: #fdd835;
+    color: #4a0072;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= BOTÃO BATIDINHA ================= */
+.btn-batidinha {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 6px;
+    background: #7b1fa2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 12px auto 0;
+    display: block;
+    transition: 0.2s;
+}
+
+.btn-batidinha:hover {
+    background: #6a1b9a;
+    transform: scale(1.03);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+
+    .produto,
+    .produto-select {
+        padding: 15px 12px;
+    }
+
+    .produto img,
+    .produto-select img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .produto h3,
+    .produto-select h3 {
+        font-size: 18px;
+    }
+
+    .produto .descricao {
+        font-size: 13px;
+    }
+}
