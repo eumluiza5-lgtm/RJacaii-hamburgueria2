@@ -34,7 +34,7 @@ atualizarStatusVisual();
 // ===============================
 // LISTAS DE ITENS
 // ===============================
-const acompanhamentos = ["Gotas de chocolate", "Flocos de arroz", "Farinha láctea", "Cereja em calda", "Leite em pó", "Chocoball", "Granulado", "Amendoim", "Sucrilhos", "Granola", "Jujuba", "Mms", "Bis"];
+const acompanhamentos = ["", "Flocos de arroz", "Farinha láctea", "Cereja em calda", "Leite em pó", "Chocoball", "Granulado", "Amendoim", "Sucrilhos", "Granola", "Jujuba", "Mms", "Bis"];
 const frutas = ["Banana", "Kiwi", "Uva"];
 const coberturas = ["Leite condensado", "Chocolate", "Morango", "Maracujá", "Kiwi"];
 const cremes = ["Chocolate", "Maracujá", "Morango", "Ninho"];
@@ -398,4 +398,5 @@ function finalizar() {
         mostrarAviso("Pedido enviado com sucesso!");
     }, 500);
 }
+
 
